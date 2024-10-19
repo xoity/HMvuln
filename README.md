@@ -11,4 +11,12 @@ then visit:
 
 `http://localhost:8000/polls/vulnerable/`
 
-and begin testing using ZAP, burp and more!
+from there you can give it some questions and it will return to you the database entry of that question, try this out!:
+
+`http://localhost:8000/polls/vulnerable/?q=Is%20Django%20cool?`
+
+now you can begin testing using ZAP, burp and more!
+
+# Contributions
+
+we are open to any form of contributions and help towards creating something that a django app shouldnt be!
