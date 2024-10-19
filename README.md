@@ -1,6 +1,8 @@
 # HMvuln
 HACK ME vulnerable application!
 
+An app built with django that uses postgresql to make an easily hackable app. 
+
 # How to Start
 
 first enter the "mysite" directory and run:
