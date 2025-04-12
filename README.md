@@ -4,11 +4,11 @@ A deliberately vulnerable Django application designed to teach SQL injection tec
 
 ## Challenge Overview
 
-This application contains intentional SQL injection vulnerabilities that allow you to:
+This application contains multiple intentional vulnerabilities that allow you to:
 
-- Extract hidden data from the database
-- Discover hidden tables
-- Find the flag to complete the challenge
+- SQL Injection: Extract hidden data from the database and discover hidden tables
+- Local File Inclusion (LFI): Access sensitive system files through path traversal
+- Find multiple flags to complete the challenge
 
 **Difficulty**: Medium
 
@@ -53,18 +53,26 @@ This application contains intentional SQL injection vulnerabilities that allow y
    python manage.py runserver
    ```
 
-6. Access the vulnerable application at:
+6. Access the vulnerable applications at:
 
-   ``` bash
-   http://localhost:8000/polls/vulnerable/
+   ```bash
+   http://localhost:8000/polls/vulnerable/  # SQL Injection Challenge
+   http://localhost:8000/polls/lfi/         # Local File Inclusion Challenge
    ```
 
 ## Challenge Goals
 
+### SQL Injection Challenge
 1. Find a way to exploit the SQL injection vulnerability
 2. Enumerate the database schema to discover hidden tables
 3. Extract the flag from the hidden table
 4. Submit the flag (format: FLAG{...})
+
+### Local File Inclusion Challenge
+1. Exploit the file inclusion vulnerability to access sensitive system files
+2. Try to access the application's configuration files to find credentials
+3. Find a way to read the database file directly
+4. Discover the hidden flag file on the system
 
 ## Hints
 
