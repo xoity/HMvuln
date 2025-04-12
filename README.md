@@ -2,12 +2,19 @@
 
 A deliberately vulnerable Django application designed to teach SQL injection techniques in a safe and controlled environment. This application simulates a CTF (Capture The Flag) style challenge similar to those found on TryHackMe or HackTheBox.
 
+## Disclaimer
+
+``` bash
+This application is intentionally vulnerable for educational purposes only. Do not deploy this in a production environment or on a publicly accessible server.
+```
+
 ## Challenge Overview
 
 This application contains multiple intentional vulnerabilities that allow you to:
 
 - SQL Injection: Extract hidden data from the database and discover hidden tables
 - Local File Inclusion (LFI): Access sensitive system files through path traversal
+- Command Injection: Execute arbitrary system commands on the server
 - Find multiple flags to complete the challenge
 
 **Difficulty**: Medium
@@ -58,21 +65,31 @@ This application contains multiple intentional vulnerabilities that allow you to
    ```bash
    http://localhost:8000/polls/vulnerable/  # SQL Injection Challenge
    http://localhost:8000/polls/lfi/         # Local File Inclusion Challenge
+   http://localhost:8000/polls/ping/        # Command Injection Challenge
    ```
 
 ## Challenge Goals
 
 ### SQL Injection Challenge
+
 1. Find a way to exploit the SQL injection vulnerability
 2. Enumerate the database schema to discover hidden tables
 3. Extract the flag from the hidden table
 4. Submit the flag (format: FLAG{...})
 
 ### Local File Inclusion Challenge
+
 1. Exploit the file inclusion vulnerability to access sensitive system files
 2. Try to access the application's configuration files to find credentials
 3. Find a way to read the database file directly
 4. Discover the hidden flag file on the system
+
+### Command Injection Challenge
+
+1. Bypass the ping functionality to execute arbitrary system commands
+2. Enumerate the server's file system and users
+3. Discover environment variables and configuration details
+4. Find the hidden flag in the server's file system
 
 ## Hints
 
@@ -98,10 +115,6 @@ This application contains multiple intentional vulnerabilities that allow you to
 - [OWASP SQL Injection Guide](https://owasp.org/www-community/attacks/SQL_Injection)
 - [SQLite Injection Cheat Sheet](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/SQL%20Injection/SQLite%20Injection.md)
 - [PortSwigger SQL Injection Tutorial](https://portswigger.net/web-security/sql-injection)
-
-## Disclaimer
-
-This application is intentionally vulnerable for educational purposes only. Do not deploy this in a production environment or on a publicly accessible server.
 
 ## Contributions
 

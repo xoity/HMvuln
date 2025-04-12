@@ -22,4 +22,5 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('vulnerable/', views.vulnerable_query, name='vulnerable_query'),
     path('lfi/', views.lfi_vulnerable, name='lfi_vulnerable'),
+    path('ping/', views.command_injection, name='command_injection'),
 ]

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Diagnostic Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .info-box {
+            background-color: #e6e6ff;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        input[type="text"] {
+            width: 60%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            font-family: monospace;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Network Diagnostic Tool</h1>
+        
+        <div class="info-box">
+            <p>Enter a hostname or IP address to ping.</p>
+            <p>Example: <code>example.com</code> or <code>8.8.8.8</code></p>
+        </div>
+        
+        <form method="get" action="">
+            <div class="form-group">
+                <input type="text" name="hostname" value="{{ hostname }}" placeholder="Enter hostname or IP...">
+                <button type="submit">Ping</button>
+            </div>
+        </form>
+        
+        {% if output %}
+        <div class="result">
+            <h3>Ping Results:</h3>
+            <pre>{{ output }}</pre>
+        </div>
+        {% endif %}
+
+        <div class="info-box" style="background-color: #ffe6e6; margin-top: 20px;">
+            <p><strong>Warning:</strong> This is a deliberately vulnerable application for educational purposes only.</p>
+        </div>
+        
+        <div class="info-box" style="margin-top: 20px;">
+            <p><strong>Hint:</strong> Some characters might allow executing additional commands...</p>
+        </div>
+    </div>
+</body>
+</html>

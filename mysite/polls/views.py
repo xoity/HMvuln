@@ -1,8 +1,27 @@
 
-from django.http import HttpResponse, FileResponse
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.db import connection
-import os
+import subprocess
+
+
+def command_injection(request):
+    hostname = request.GET.get('hostname', '')
+    output = None
+    
+    if hostname:
+        try:
+            # Intentionally vulnerable - command injection
+            # User input is directly passed to a shell command without sanitization
+            command = f"ping -c 1 {hostname}"
+            output = subprocess.check_output(command, shell=True, stderr=subprocess.STDOUT, text=True)
+        except subprocess.CalledProcessError as e:
+            output = e.output
+    
+    return render(request, 'polls/command_injection.html', {
+        'hostname': hostname,
+        'output': output
+    })
 
 
 def vulnerable_query(request):
