@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQLite Hacking Challenge</title>
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #58a6ff;
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #161b22;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.1);
+        }
+        h1 {
+            color: #7ee787;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #0d1117;
+            color: #58a6ff;
+            border: 1px solid #30363d;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #238636;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 4px;
+            white-space: pre-wrap;
+        }
+        .hint {
+            margin-top: 30px;
+            color: #f0883e;
+            font-size: 0.9em;
+            text-align: center;
+        }
+        .flag-container {
+            display: none;
+        }
+        .challenge-info {
+            margin-top: 30px;
+            color: #bbb;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SQLite Injection Challenge</h1>
+        <div class="challenge-info">
+            <p>Welcome to the SQLite Injection Training Ground! Your mission is to extract hidden data from the database.</p>
+            <p>Difficulty: <span style="color: #f0883e;">Medium</span></p>
+        </div>
+        
+        <form action="" method="get">
+            <div class="form-group">
+                <label for="q">Enter a question to search:</label>
+                <input type="text" id="q" name="q" value="{{ user_input|default:'' }}">
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+        
+        {% if result %}
+        <div class="result">
+            <h3>Database Result:</h3>
+            <code>{{ result }}</code>
+        </div>
+        {% endif %}
+        
+        <div class="hint">
+            <p>Hint: Sometimes the most vulnerable queries are constructed with string formatting...</p>
+        </div>
+        
+        <!-- Hidden flag that users need to find through SQLi -->
+        <div class="flag-container">
+            <!-- FLAG{SQLite_1nj3ct10n_m4st3r} -->
+        </div>
+    </div>
+</body>
+</html>
